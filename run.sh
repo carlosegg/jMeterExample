@@ -30,23 +30,19 @@ function init(){
    OUTPUT_DIR=${WORKSPACE}/target/
    OUTPUT_REPORTS_DIR=$OUTPUT_DIR/reports
    LOG_DIR=$OUTPUT_DIR/logs
-   mkdir -p $LOG_DIR
    rm -Rf $OUTPUT_DIR $OUTPUT_REPORTS_DIR
-   mkdir -p $OUTPUT_DIR $OUTPUT_REPORTS_DIR
+   mkdir -p $OUTPUT_DIR $OUTPUT_REPORTS_DIR $LOG_DIR
    JTL_FILE="${OUTPUT_REPORTS_DIR}/jmeter-example.jtl"
-   
 }
 
 function execute(){
    ${JMETER_HOME}/bin/jmeter.sh -n -j "${LOG_DIR}/jmeter-example.log" -l "${JTL_FILE}" -t "./develenv.jmx"
 }
 
-
 function reports(){
    # Convertir informe a HTML
    cd reports
    "./jmeter_report_to_html.sh" "${JTL_FILE}" "$OUTPUT_REPORTS_DIR"
-   
    # Generar resumen
    "./create_jmeter_summary.sh" "${JTL_FILE}" "$OUTPUT_REPORTS_DIR"
    # Convertir informe a HTML (con xalan)
@@ -54,8 +50,8 @@ function reports(){
   ./develenv_jtl "${JTL_FILE}"
   ./jtl2html "${JTL_FILE}"
    cd -
-   echo "TODO"
 }
+
 init
 execute
 reports
