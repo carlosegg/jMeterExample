@@ -41,7 +41,7 @@ function execute(){
 
 function reports(){
    # Convertir informe a HTML
-   cd reports
+   cd $WORKSPACE/reports
    "./jmeter_report_to_html.sh" "${JTL_FILE}" "$OUTPUT_REPORTS_DIR"
    # Generar resumen
    "./create_jmeter_summary.sh" "${JTL_FILE}" "$OUTPUT_REPORTS_DIR"
@@ -55,6 +55,4 @@ function reports(){
 init
 execute
 reports
-
-
 
