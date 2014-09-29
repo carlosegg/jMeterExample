@@ -125,7 +125,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1377242157">/sonar/stylesheets/sonar.css</stringProp>
+                <stringProp name="-1377242157">/sonar/css/sonar.css</stringProp>
                 <stringProp name="0"></stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
