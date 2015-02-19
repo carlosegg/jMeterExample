@@ -36,7 +36,7 @@ function init(){
 }
 
 function execute(){
-   ${JMETER_HOME}/bin/jmeter.sh -n -j "${LOG_DIR}/jmeter-example.log" -l "${JTL_FILE}" -t "./develenv.jmx"
+   ${JMETER_HOME}/bin/jmeter.sh -n -j -Jjmeter.save.saveservice.output_format=xml "${LOG_DIR}/jmeter-example.log" -l "${JTL_FILE}" -t "./develenv.jmx"
 }
 
 function reports(){
