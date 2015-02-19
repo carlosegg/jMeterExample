@@ -36,7 +36,7 @@ function init(){
 }
 
 function execute(){
-   ${JMETER_HOME}/bin/jmeter.sh -n -j -Jjmeter.save.saveservice.output_format=xml "${LOG_DIR}/jmeter-example.log" -l "${JTL_FILE}" -t "./develenv.jmx"
+   ${JMETER_HOME}/bin/jmeter -n -j -Jjmeter.save.saveservice.output_format=xml "${LOG_DIR}/jmeter-example.log" -l "${JTL_FILE}" -t "./develenv.jmx"
 }
 
 function reports(){
@@ -46,7 +46,7 @@ function reports(){
    # Generar resumen
    "./create_jmeter_summary.sh" "${JTL_FILE}" "$OUTPUT_REPORTS_DIR"
    # Convertir informe a HTML (con xalan)
-   java -classpath ${JMETER_HOME}/lib/xalan-2.7.1.jar:${JMETER_HOME}/lib/serializer-2.7.1.jar org.apache.xalan.xslt.Process -IN "${JTL_FILE}" -XSL "${JMETER_HOME}/extras/jmeter-results-report_21.xsl" -OUT "$OUTPUT_REPORTS_DIR/jmeter-example-xalan.html"
+   java -classpath ${JMETER_HOME}/lib/xalan-2.7.2.jar:${JMETER_HOME}/lib/serializer-2.7.2.jar org.apache.xalan.xslt.Process -IN "${JTL_FILE}" -XSL "${JMETER_HOME}/extras/jmeter-results-report_21.xsl" -OUT "$OUTPUT_REPORTS_DIR/jmeter-example-xalan.html"
   ./develenv_jtl "${JTL_FILE}"
   ./jtl2html "${JTL_FILE}"
    cd -
